@@ -107,18 +107,18 @@ class Extras:
         author = ctx.message.author
         await self.bot.delete_message(ctx.message)
         if channelname == "nsfw":
-            if self.bot.elsewhere_role in author.roles:
-                await self.bot.remove_roles(author, self.bot.elsewhere_role)
+            if self.bot.nsfw_role in author.roles:
+                await self.bot.remove_roles(author, self.bot.nsfw_role)
                 await self.bot.send_message(author, "Access to #nsfw removed.")
             else:
-                await self.bot.add_roles(author, self.bot.elsewhere_role)
+                await self.bot.add_roles(author, self.bot.nsfw_role)
                 await self.bot.send_message(author, "Access to #nsfw granted.")
         elif channelname == "cancer":
-            if self.bot.eventchat_role in author.roles:
-                await self.bot.remove_roles(author, self.bot.eventchat_role)
+            if self.bot.cancer_role in author.roles:
+                await self.bot.remove_roles(author, self.bot.cancer_role)
                 await self.bot.send_message(author, "Access to #cancer removed.")
             else:
-                await self.bot.add_roles(author, self.bot.eventchat_role)
+                await self.bot.add_roles(author, self.bot.cancer_role)
                 await self.bot.send_message(author, "Access to #cancer granted.")
         else:
             await self.bot.send_message(author, "{} is not a valid toggleable channel.".format(channelname))

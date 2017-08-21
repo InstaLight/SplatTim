@@ -150,32 +150,5 @@ class Mod:
         except discord.errors.Forbidden:
             await self.bot.say("💢 I don't have permission to do this.")
 
-    @commands.has_permissions(ban_members=True)
-    @commands.command(pass_context=True)
-    async def status(self, ctx, status):
-        """Sets status. Staff only."""
-        try:
-            if status == "online":
-                await self.bot.change_presence(status=discord.Status.online)
-            elif status == "offline":
-                await self.bot.change_presence(status=discord.Status.offline)
-            elif status == "idle":
-                await self.bot.change_presence(status=discord.Status.idle)
-            elif status == "dnd":
-                await self.bot.change_presence(status=discord.Status.dnd)
-            elif status == "invisible":
-                await self.bot.change_presence(status=discord.Status.invisible)
-        except discord.errors.Forbidden:
-            await self.bot.say("💢 I don't have permission to do this.")
-
-    @commands.has_permissions(ban_members=True)
-    @commands.command(pass_context=True, hidden=True)
-    async def username(self, ctx, *, username):
-        """Sets bot name. Staff only."""
-        try:
-            await self.bot.edit_profile(username=('{}'.format(username)))
-        except discord.errors.Forbidden:
-            await self.bot.say("💢 I don't have permission to do this.")
-
 def setup(bot):
     bot.add_cog(Mod(bot))

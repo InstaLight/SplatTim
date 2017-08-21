@@ -14,10 +14,10 @@ class ModWarn:
 
     @commands.command(pass_context=True)
     async def warn(self, ctx, user, *, reason=""):
-        """Warn a user. Staff and Helpers only."""
+        """Warn a user. Staff only."""
         issuer = ctx.message.author
-        if (self.bot.helpers_role not in issuer.roles) and (self.bot.staff_role not in issuer.roles) and (self.bot.verified_role not in issuer.roles) and (self.bot.trusted_role not in issuer.roles):
-            msg = "{0} This command is limited to Staff and Helpers.".format(issuer.mention)
+        if (self.bot.Fresh_role not in issuer.roles) and (self.bot.SquidKid_role not in issuer.roles) and (self.bot.Woomy_role not in issuer.roles):
+            msg = "{0} This command is limited to Staff.".format(issuer.mention)
             await self.bot.say(msg)
             return
         try:
@@ -25,7 +25,7 @@ class ModWarn:
         except IndexError:
             await self.bot.say("Please mention a user.")
             return
-        if self.bot.staff_role in member.roles:
+        if self.bot.Fresh_role in member.roles and self.bot.SquidKid_role in member.roles and self.bot.Woomy_role in member.roles:
             await self.bot.say("You can't warn another staffer with this command!")
             return
         with open("data/warns.json", "r") as f:
@@ -41,7 +41,7 @@ class ModWarn:
         if reason != "":
             # much \n
             msg += " The given reason is: " + reason
-        msg += "\n\nPlease read the rules in #welcome-and-rules. This is warn #{}.".format(len(warns[member.id]["warns"]))
+        msg += "\n\nPlease read the rules in #welcome. This is warn #{}.".format(len(warns[member.id]["warns"]))
         warn_count = len(warns[member.id]["warns"])
         if warn_count == 2:
             msg += " __The next warn will automatically kick.__"
@@ -70,10 +70,10 @@ class ModWarn:
 
     @commands.command(pass_context=True)
     async def listwarns(self, ctx, user):
-        """List warns for a user. Staff and Helpers only."""
+        """List warns for a user. Staff only."""
         issuer = ctx.message.author
-        if (self.bot.helpers_role not in issuer.roles) and (self.bot.staff_role not in issuer.roles) and (self.bot.verified_role not in issuer.roles) and (self.bot.trusted_role not in issuer.roles):
-            msg = "{0} This command is limited to Staff and Helpers.".format(issuer.mention)
+        if (self.bot.Fresh_role not in issuer.roles) and (self.bot.SquidKid_role not in issuer.roles) and (self.bot.Woomy_role not in issuer.roles):
+            msg = "{0} This command is limited to Staff.".format(issuer.mention)
             await self.bot.say(msg)
             return
         try:
@@ -107,10 +107,10 @@ class ModWarn:
 
     @commands.command(pass_context=True)
     async def listwarnsid(self, ctx, user_id):
-        """List warns for a user based on ID. Staff and Helpers only."""
+        """List warns for a user based on ID. Staff only."""
         issuer = ctx.message.author
-        if (self.bot.helpers_role not in issuer.roles) and (self.bot.staff_role not in issuer.roles) and (self.bot.verified_role not in issuer.roles) and (self.bot.trusted_role not in issuer.roles):
-            msg = "{0} This command is limited to Staff and Helpers.".format(issuer.mention)
+        if (self.bot.Fresh_role not in issuer.roles) and (self.bot.SquidKid_role not in issuer.roles) and (self.bot.Woomy_role not in issuer.roles):
+            msg = "{0} This command is limited to Staff.".format(issuer.mention)
             await self.bot.say(msg)
             return
         embed = discord.Embed(color=discord.Color.dark_red())

@@ -46,7 +46,7 @@ class KickBan:
     @commands.has_permissions(ban_members=True)
     @commands.command(pass_context=True, name="ban")
     async def ban_member(self, ctx, user, *, reason=""):
-        """Bans a user from the server. OP+ only."""
+        """Bans a user from the server. Staff only."""
         try:
             try:
                 member = ctx.message.mentions[0]
@@ -75,7 +75,7 @@ class KickBan:
     @commands.has_permissions(ban_members=True)
     @commands.command(pass_context=True, name="silentban", hidden=True)
     async def silentban_member(self, ctx, user, *, reason=""):
-        """Bans a user from the server, without a notification. OP+ only."""
+        """Bans a user from the server, without a notification. Staff only."""
         try:
             try:
                 member = ctx.message.mentions[0]
@@ -96,7 +96,7 @@ class KickBan:
     @commands.has_permissions(ban_members=True)
     @commands.command(pass_context=True, name="timeban")
     async def timeban_member(self, ctx, user, length, *, reason=""):
-        """Bans a user for a limited period of time. OP+ only.\n\nLength format: #d#h#m#s"""
+        """Bans a user for a limited period of time. Staff only.\n\nLength format: #d#h#m#s"""
         try:
             member = ctx.message.mentions[0]
         except IndexError:
@@ -146,7 +146,7 @@ class KickBan:
     @commands.has_permissions(ban_members=True)
     @commands.command(pass_context=True, name="softban")
     async def softban_member(self, ctx, user, *, reason):
-        """Soft-ban a user. OP+ only.\n\nThis "bans" the user without actually doing a ban on Discord. The bot will instead kick the user every time they join. Discord bans are account- and IP-based."""
+        """Soft-ban a user. Staff only.\n\nThis "bans" the user without actually doing a ban on Discord. The bot will instead kick the user every time they join. Discord bans are account- and IP-based."""
         try:
             try:
                 member = ctx.message.mentions[0]
@@ -175,7 +175,7 @@ class KickBan:
     @commands.has_permissions(ban_members=True)
     @commands.command(pass_context=True, name="softbanid")
     async def softbanid_member(self, ctx, user_id, *, reason):
-        """Soft-ban a user based on ID. OP+ only.\n\nThis "bans" the user without actually doing a ban on Discord. The bot will instead kick the user every time they join. Discord bans are account- and IP-based."""
+        """Soft-ban a user based on ID. Staff only.\n\nThis "bans" the user without actually doing a ban on Discord. The bot will instead kick the user every time they join. Discord bans are account- and IP-based."""
         issuer = ctx.message.author
         with open("data/softbans.json", "r") as f:
             softbans = json.load(f)
@@ -197,7 +197,7 @@ class KickBan:
     @commands.command(pass_context=True, name="unsoftban")
     async def unsoftban_member(self, ctx, user_id):
         issuer = ctx.message.author
-        """Un-soft-ban a user based on ID. OP+ only."""
+        """Un-soft-ban a user based on ID. Staff only."""
         with open("data/softbans.json", "r") as f:
             softbans = json.load(f)
         if user_id not in softbans:

@@ -48,11 +48,6 @@ if not os.path.isfile("data/staff.json"):
     with open("data/staff.json", "w") as f:
         f.write("{}")
 
-# create helpers.json if it doesn't exist
-if not os.path.isfile("data/helpers.json"):
-    with open("data/helpers.json", "w") as f:
-        f.write("{}")
-
 # create timebans.json if it doesn't exist
 if not os.path.isfile("data/timebans.json"):
     with open("data/timebans.json", "w") as f:
@@ -151,30 +146,30 @@ async def on_ready():
         bot.welcome_channel = discord.utils.get(server.channels, name="welcome")
         bot.announcements_channel = discord.utils.get(server.channels, name="announcements")
         bot.voiceandmusic_channel = discord.utils.get(server.channels, name="voice-and-music")
-        bot.elsewhere_channel = discord.utils.get(server.channels, name="nsfw")
+        bot.nsfw_channel = discord.utils.get(server.channels, name="nsfw")
         bot.mods_channel = discord.utils.get(server.channels, name="staff-chat")
         bot.modlogs_channel = discord.utils.get(server.channels, name="mod-logs")
         bot.serverlogs_channel = discord.utils.get(server.channels, name="server-logs")
         bot.messagelogs_channel = discord.utils.get(server.channels, name="message-logs")
         bot.watchlogs_channel = discord.utils.get(server.channels, name="watch-logs")
         bot.boterr_channel = discord.utils.get(server.channels, name="bot-err")
-        bot.eventchat_channel = discord.utils.get(server.channels, name="cancer")
+        bot.cancer_channel = discord.utils.get(server.channels, name="cancer")
 
         # roles
-        bot.op_role = discord.utils.get(server.roles, name="Fresh!")
-        bot.superop_role = discord.utils.get(server.roles, name="SquidKid")
-        bot.owner_role = discord.utils.get(server.roles, name="Woomy")
+        bot.Fresh_role = discord.utils.get(server.roles, name="Fresh!")
+        bot.SquidKid_role = discord.utils.get(server.roles, name="SquidKid")
+        bot.Woomy_role = discord.utils.get(server.roles, name="Woomy")
         bot.trusted_role = discord.utils.get(server.roles, name="Trusted")
         bot.muted_role = discord.utils.get(server.roles, name="Muted")
-        bot.elsewhere_role = discord.utils.get(server.roles, name="nsfw")
-        bot.eventchat_role = discord.utils.get(server.roles, name="cancer")
+        bot.nsfw_role = discord.utils.get(server.roles, name="nsfw")
+        bot.cancer_role = discord.utils.get(server.roles, name="cancer")
         bot.helpers_role = discord.utils.get(server.roles, name="Woomy")
         bot.everyone_role = server.default_role
 
         bot.staff_ranks = {
-            "Fresh!": bot.op_role,
-            "SquidKid": bot.superop_role,
-            "Woomy": bot.owner_role,
+            "Fresh!": bot.Fresh_role,
+            "SquidKid": bot.SquidKid_role,
+            "Woomy": bot.Woomy_role,
         }
 
         # load timebans
@@ -215,7 +210,6 @@ async def on_ready():
 
 # loads extensions
 addons = [
-    'addons.auto_probation',
     'addons.extras',
     'addons.kickban',
     'addons.load',
