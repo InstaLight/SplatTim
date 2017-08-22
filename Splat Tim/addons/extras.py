@@ -102,6 +102,21 @@ class Extras:
         await self.bot.say("Done!")
 
     @commands.command(pass_context=True, hidden=True)
+    async def togglerole(self, ctx, role):
+        """Enable or disable specific roles."""
+        author = ctx.message.author
+        await self.bot.delete_message(ctx.message)
+        if channelname == "pingable":
+            if self.bot.pingable_role in author.roles:
+                await self.bot.remove_roles(author, self.bot.pingable_role)
+                await self.bot.send_message(author, "You are no longer pingable.")
+            else:
+                await self.bot.add_roles(author, self.bot.pingable_role)
+                await self.bot.send_message(author, "You are now pingable.")
+        else:
+            await self.bot.send_message(author, "{} is not a valid toggleable role.".format(channelname))
+
+    @commands.command(pass_context=True, hidden=True)
     async def togglechannel(self, ctx, channelname):
         """Enable or disable access to specific channels."""
         author = ctx.message.author

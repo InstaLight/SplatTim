@@ -154,6 +154,7 @@ async def on_ready():
         bot.watchlogs_channel = discord.utils.get(server.channels, name="watch-logs")
         bot.boterr_channel = discord.utils.get(server.channels, name="bot-err")
         bot.cancer_channel = discord.utils.get(server.channels, name="cancer")
+        bot.pingable_channel = discord.utils.get(server.channels, name="announcements")
 
         # roles
         bot.Fresh_role = discord.utils.get(server.roles, name="Fresh!")
@@ -163,7 +164,7 @@ async def on_ready():
         bot.muted_role = discord.utils.get(server.roles, name="Muted")
         bot.nsfw_role = discord.utils.get(server.roles, name="nsfw")
         bot.cancer_role = discord.utils.get(server.roles, name="cancer")
-        bot.helpers_role = discord.utils.get(server.roles, name="Woomy")
+        bot.pingable_role = discord.utils.get(server.roles, name="pingable")
         bot.everyone_role = server.default_role
 
         bot.staff_ranks = {
